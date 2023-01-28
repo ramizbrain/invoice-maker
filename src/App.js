@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "./assets/logo.png";
 import "./App.css";
+import { useState } from "react";
 
 import {
   Document,
@@ -18,7 +19,7 @@ const st = StyleSheet.create({
     padding: "20px 40px",
   },
   renderOnDOM: {
-    width: 1440,
+    width: "100%",
     height: "100vh",
   },
   logo: {
@@ -42,12 +43,14 @@ const st = StyleSheet.create({
 });
 
 const InvoiceDocument = () => {
+  const [tax, setTax] = useState(100);
   return (
     <Document>
       <Page size="A4" style={[st.page]}>
         <View>
           <Image src={Logo} style={[st.logo]}></Image>
           <View>
+            {tax ? <Text>Tax: {tax}</Text> : null}
             <Text>Halo semua</Text>
           </View>
         </View>
